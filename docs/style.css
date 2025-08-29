@@ -162,3 +162,47 @@ body {
   color: #555;
   text-align: center;
 }
+
+@media (max-width: 600px) {
+
+  .app {
+    padding: 1rem;        /* less padding */
+  }
+
+  .header h1 {
+    width: 100%;          /* full width header */
+    height: auto;
+    font-size: 1.25rem;   /* shrink title a bit */
+  }
+
+  .header-row {
+    display: flex;
+    flex-direction: column;  /* stack date & progress vertically */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .date {
+    width: 100px;          /* smaller date card */
+    height: auto;
+    padding: 1rem;
+  }
+
+  .progress-box {
+    width: 100%;           /* let it stretch */
+    margin: 0;
+  }
+
+  .new-todo {
+    flex-direction: column; /* stack input + button */
+    width: 100%;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .add-btn {
+    width: 100%;
+  }
+}
