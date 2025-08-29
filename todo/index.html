@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do Tasks</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="index.css">
+  <meta name="theme-color" content="#402D21" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>To-Dos</h1>
+      <div class="header-row">
+        <div class="date"></div>
+
+        <div class="progress-box">
+          <div class="progress">
+            <div class="progress__bar" style="width:0%"></div>
+          </div>
+          <p class="progress__label">0% complete</p>
+        </div>
+
+        <section class="new-todo">
+          <input type="text" class="input" placeholder="What needs to be done?">
+          <button class="add-btn">Add</button>
+        </section>
+      </div>
+    </header>
+
+    <ul class="todo-list"></ul>
+    <p class="empty-state">No tasks yet. Add one above!</p>
+  </div>
+
+  <script src="app.js"></script>
+
+  <!-- Register service worker (PWA offline/install) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js');
+    }
+  </script>
+</body>
+</html>

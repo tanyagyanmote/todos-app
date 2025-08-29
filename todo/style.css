@@ -1,0 +1,164 @@
+/* ========== Reset ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ========== App container ========== */
+body {
+  font-family: 'TheSeasonsBold';
+  background-color: #f9f9f9;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.app {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+/* ========== Header ========== */
+.header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  background: #F7F2F0;
+  color: #402D21;
+  width: 550px;
+  height: 40px;
+  padding: 6px;
+  border-radius: 15px;
+  border: 1px solid #402D21;
+
+}
+
+/* Row: date (left) + progress & input (right) */
+.header-row {
+  display: grid;
+  grid-template-columns: 170px 1fr; /* left = date, right = content */
+  align-items: start;
+  gap: 1rem;
+}
+
+.header-row .date {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 100%; /* fill the left column */
+}
+
+/* ========== New task input ========== */
+.new-todo {
+  grid-column: 2;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.input {
+  font-family: 'TheSeasonsBold';
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: #402D21;
+  border: 1px solid #402D21;
+  border-radius: 6px;
+}
+
+.add-btn {
+  font-family: 'TheSeasonsBold';
+  font-size: 1rem;
+  cursor: pointer;
+  color: #402D21;
+  background: #F7F2F0;
+  border: 1px solid #402D21;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.add-btn:hover {
+  background: #402D21;
+  color: #F7F2F0;
+}
+
+/* ========== Todo list ========== */
+.todo-list {
+  list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.empty-state {
+  text-align: center;
+  color: #777;
+  margin-top: 1rem;
+}
+
+/* ========== Date card ========== */
+.date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  background: #F7F2F0;
+  color: #402D21;
+  width: 150px;
+  height: 150px;
+  padding: 2px;
+  text-align: center;
+  border: 1px solid #402D21;
+  border-radius: 15px;
+}
+
+.date-weekday { font-size: 1.75rem; }
+.date-day     { font-size: 2.75rem; }
+.date-month   { font-size: 1rem; }
+.date-year    { font-size: 1rem; }
+
+/* ========== Progress ========== */
+.progress-box {
+  grid-column: 2;
+  width: 350px;
+  color: #402D21;
+  background: #F7F2F0;
+  border: 1px solid #402D21;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 0; /* last-declared margin wins in your original */
+}
+
+.progress {
+  height: 8px;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0.5rem 0 1rem;
+}
+
+.progress__bar {
+  height: 100%;
+  width: 0%;
+  background: #402; /* your current accent */
+  transition: width 0.25s ease;
+}
+
+.progress__label {
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+}
