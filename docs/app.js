@@ -23,6 +23,15 @@ document.querySelector('.date').innerHTML = `
 
 // -------------------- Persistence --------------------
 const STORAGE_KEY = 'todo.tasks.v1';
+const STORAGE_DATE_KEY = 'todo.lastDate.v1';
+
+function getTodayKey() {
+  const d = new Date();
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`; // YYYY-MM-DD
+}
 
 function saveTasks() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
@@ -69,6 +78,7 @@ function renderTask(task) {
     task.done = checkbox.checked;
     updateProgress();
     saveTasks();
+    localStorage.setItem(STORAGE_DATE_KEY, getTodayKey());
   });
 
   li.appendChild(textSpan);
@@ -86,6 +96,7 @@ function addTask(text) {
   updateEmptyState();
   updateProgress();
   saveTasks();
+  localStorage.setItem(STORAGE_DATE_KEY, getTodayKey());
 
   new_task.value = "";
   new_task.focus();
@@ -98,7 +109,20 @@ new_task.addEventListener('keydown', (e) => {
 });
 
 // -------------------- Init --------------------
-tasks = loadTasks();
+const todayKey = getTodayKey();
+const lastKey  = localStorage.getItem(STORAGE_DATE_KEY);
+
+if (lastKey !== todayKey) {
+  tasks = [];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  localStorage.setItem(STORAGE_DATE_KEY, todayKey);
+} else {
+  tasks = loadTasks();
+}
+
+console.log("Today key:", getTodayKey());
+console.log("Last saved key:", localStorage.getItem(STORAGE_DATE_KEY));
+
 tasks.forEach(renderTask);
 updateEmptyState();
 updateProgress();

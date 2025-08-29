@@ -37,8 +37,7 @@ body {
   height: 40px;
   padding: 6px;
   border-radius: 15px;
-  border: 1px solid #402D21;
-
+  border: 1px solid #402D21; 
 }
 
 /* Row: date (left) + progress & input (right) */
